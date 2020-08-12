@@ -6,9 +6,11 @@ import tiles from "./assets/scifi_platformTiles_32x32.png";
 import background from "./assets/field.svg";
 import dragon from "./assets/dragon.png";
 import fireball from "./assets/fireball.png";
+import knight from "./assets/knight.png";
 
 var speed1;
 var movingFireball;
+var movingKnight;
 
 var config = {
   /*
@@ -31,10 +33,11 @@ var config = {
     preload: function preload() {
       // this.load.setBaseURL("http://labs.phaser.io");
 
+      // JC
       this.load.image("background", background);
       this.load.image('dragon', dragon);
       this.load.image('fireball', fireball);
-
+      this.load.image('knight', knight);
 
       /*
         Due to different browsers supporting different audio file types you should usually provide your audio files in a
@@ -64,12 +67,14 @@ var config = {
       this.add.image(25, 500, 'dragon').setOrigin(0);
       movingFireball = this.add.image(120, 520, 'fireball').setOrigin(0);
 
+      this.add.image(700, 500, 'knight').setOrigin(0);
+      var movingKnight=this.add.image(420, 920, 'knight').setOrigin(0);
+
       // JC: add speed var
       speed1 = Phaser.Math.GetSpeed(600, 2);
     },
     update: function (time, delta) {
       movingFireball.x += speed1 * delta;
-
       if (movingFireball.x > 864) {
         movingFireball.x = 64;
       }
