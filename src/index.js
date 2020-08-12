@@ -27,14 +27,13 @@ var config = {
   physics: {
     default: "arcade",
     arcade: {
+      // Set to 0 so the collision works as expected
       gravity: { y: 0 },
     },
   },
   scene: {
     preload: function preload() {
-      // this.load.setBaseURL("http://labs.phaser.io");
-
-      // JC
+      // Load in the images for the game
       this.load.image("background", background);
       this.load.image('dragon', dragon);
       this.load.image('fireball', fireball);
@@ -49,43 +48,26 @@ var config = {
         key: 'music',
         url: [mp3 /*, ogg, m4a */] // import more files and add here for more support
       });
-      // this.load.spritesheet('tiles', tiles, {
-      //   frameWidth: 32,
-      //   frameHeight: 32
-      // });
     },
     create: function create() {
-      //this.sound.play('music');
       this.add.image(400, 300, "background");
 
-      //var box = this.physics.add.image(400, 100, "tiles", 15);
-
-      // box.setVelocity(100, 200);
-      // box.setBounce(1, 1);
-      // box.setCollideWorldBounds(true);
-
-      // JC: add dragon image
+      // Add dragon image
       this.add.image(25, 500, 'dragon').setOrigin(0);
       movingFireball = this.physics.add.image(120, 520, 'fireball').setOrigin(0);
 
-      // JC: add knight image, movement      
+      // Add knight image, and movement      
       movingKnight=this.physics.add.image(700, 500, 'knight').setOrigin(0);
-      movingKnight.setCollideWorldBounds(true);
-      // movingKnight.setBounce(1, 1);
+      movingKnight.setCollideWorldBounds(true);      
       movingKnight.keys=this.input.keyboard.createCursorKeys();
 
-      // JC: add speed var
+      // Add speed to fireball
       speed1 = Phaser.Math.GetSpeed(600, 2);
 
-      console.log('above processCollision');
-
+      // Lose the game! The is hit with a fireball :(
       const processCollision = (movingFireball, movingKnight) => {
         console.log('entered processCollision');
-        movingKnight.destroy();
-        // const starsLeft = stars.countActive();
-        // if (starsLeft === 0) {
-        //   this.scene.start('winscreen');
-        // }
+        movingKnight.destroy();        
       }
   
       this.physics.add.collider(
@@ -95,24 +77,20 @@ var config = {
         null,
         this
       );
-
-      
-
     },
     update: function (time, delta) {
+      // The fireball moves accross the screen
       movingFireball.x += speed1 * delta;
       if (movingFireball.x > 864) {
         movingFireball.x = 64;
       }
 
+      // Move the knight toward the dragon
       if (movingKnight.keys.left.isDown) {
         movingKnight.x -= 5;
         movingKnight.keys.left.isDown=false;
         console.log('left pressed down');
       }
-    
-
-
     },
   },
 };
