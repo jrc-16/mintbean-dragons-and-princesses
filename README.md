@@ -34,3 +34,36 @@ This starter template is meant to be a kickoff spot for a full-fledged PhaserJS 
 [OpenGameArt](https://opengameart.org/) - Free game assets for everyone.
 [Itch.io](https://itch.io/game-assets/free) - More free game assets.
 [Official Phaser webpack template](https://github.com/photonstorm/phaser3-project-template) - Not recently maintained, but an alternative in case you want a different project.
+
+## Hackathon game design and notes
+
+
+game design
+    - add 1 dragon and 1 princesses to the game
+
+    - move from 1 side of the screen to other
+
+    - dodge the fireballs fired by the dragon
+
+    - jump over them to avoid getting hit
+
+    - either hit with a sword (or bump into the dragon if easier)
+
+    - win criteria: run toward dragon and hit it (or bump into it)
+
+    - lose criteria: get hit by dragon flames
+
+
+
+- deploy to codepen
+
+- 4th session open class
+
+- finish in 4 hours
+
+- use assets
+
+- use the code loop
+    - update function?
+
+- must have a win conditoin
