@@ -39,21 +39,23 @@ This starter template is meant to be a kickoff spot for a full-fledged PhaserJS 
 
 
 game design
-    - add 1 dragon and 1 princesses to the game
+  - add 1 dragon and 1 princesses to the game
 
-    - move from 1 side of the screen to other
+  - move from 1 side of the screen to other
 
-    - dodge the fireballs fired by the dragon
+  - dodge the fireballs fired by the dragon
 
-    - jump over them to avoid getting hit
+  - jump over them to avoid getting hit
 
-    - either hit with a sword (or bump into the dragon if easier)
+  - either hit with a sword (or bump into the dragon if easier)
 
-    - win criteria: run toward dragon and hit it (or bump into it)
+  - win criteria: run toward dragon and hit it (or bump into it, or maybe easier to run underneath)
+  
+  - lose criteria: get hit by dragon flames
 
-    - lose criteria: get hit by dragon flames
-
-
+look and feel
+  - background: use a dungeon image
+  - use a Knight
 
 - deploy to codepen
 
