@@ -11,6 +11,7 @@ import knight from "./assets/knight.png";
 var speed1;
 var movingFireball;
 var movingKnight;
+var jumpButton;
 
 var config = {
   /*
@@ -26,7 +27,7 @@ var config = {
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { y: 200 },
+      gravity: { y: 0 },
     },
   },
   scene: {
@@ -63,21 +64,55 @@ var config = {
       // box.setBounce(1, 1);
       // box.setCollideWorldBounds(true);
 
-      // JC: add images
+      // JC: add dragon image
       this.add.image(25, 500, 'dragon').setOrigin(0);
-      movingFireball = this.add.image(120, 520, 'fireball').setOrigin(0);
+      movingFireball = this.physics.add.image(120, 520, 'fireball').setOrigin(0);
 
-      this.add.image(700, 500, 'knight').setOrigin(0);
-      var movingKnight=this.add.image(420, 920, 'knight').setOrigin(0);
+      // JC: add knight image, movement      
+      movingKnight=this.physics.add.image(700, 500, 'knight').setOrigin(0);
+      movingKnight.setCollideWorldBounds(true);
+      // movingKnight.setBounce(1, 1);
+      movingKnight.keys=this.input.keyboard.createCursorKeys();
 
       // JC: add speed var
       speed1 = Phaser.Math.GetSpeed(600, 2);
+
+      console.log('above processCollision');
+
+      const processCollision = (movingFireball, movingKnight) => {
+        console.log('entered processCollision');
+        movingKnight.destroy();
+        // const starsLeft = stars.countActive();
+        // if (starsLeft === 0) {
+        //   this.scene.start('winscreen');
+        // }
+      }
+  
+      this.physics.add.collider(
+        movingFireball,
+        movingKnight,
+        processCollision,
+        null,
+        this
+      );
+
+      
+
     },
     update: function (time, delta) {
       movingFireball.x += speed1 * delta;
       if (movingFireball.x > 864) {
         movingFireball.x = 64;
       }
+
+      if (movingKnight.keys.left.isDown) {
+        movingKnight.x -= 5;
+        movingKnight.keys.left.isDown=false;
+        console.log('left pressed down');
+      }
+    
+
+
     },
   },
 };
