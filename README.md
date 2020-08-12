@@ -69,3 +69,7 @@ look and feel
     - update function?
 
 - must have a win conditoin
+
+- dragon: fire some fireballs
+  - move the dragon up and down
+  - get the fire to hit the player
